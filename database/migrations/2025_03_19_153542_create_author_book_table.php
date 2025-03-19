@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('loans', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(Member::class)->constrained();
+        Schema::create('author_book', function (Blueprint $table) {
             $table->foreignIdFor(Book::class)->constrained();
-            $table->date('loan_date');
-            $table->date('return_date');
-            $table->timestamps();
+            $table->foreignIdFor(Member::class)->constrained();
         });
     }
 
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('loans');
+        Schema::dropIfExists('author_book');
     }
 };
